@@ -1,0 +1,24 @@
+{
+  "name": "typescript-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "gulp build",
+    "clean": "gulp clean"
+  },
+  "keywords": [],
+  "author": "FurtherV",
+  "license": "MIT",
+  "devDependencies": {
+    "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-json-editor": "^2.5.7",
+    "gulp-less": "^5.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-zip": "^5.1.0",
+    "typescript": "^5.1.6"
+  }
+}

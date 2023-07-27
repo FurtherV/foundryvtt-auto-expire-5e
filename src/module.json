@@ -1,0 +1,46 @@
+{
+    "id": "typescript-template",
+    "title": "Typescript Template",
+    "description": "Typescript Template",
+    "version": "1.0.0",
+    "compatibility": {
+        "minimum": "11",
+        "verified": "11"
+    },
+    "authors": [
+        {
+            "name": "FurtherV",
+            "discord": "furtherv",
+            "url": "https://github.com/FurtherV"
+        }
+    ],
+    "relationships": {
+        "systems": [
+            {
+                "id": "dnd5e",
+                "type": "system"
+            }
+        ]
+    },
+    "styles": ["styles/typescript-template.css"],
+    "esmodules": ["scripts/main.js"],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json",
+            "flags": {}
+        }
+    ],
+    "flags": {
+        "hotReload": {
+            "extensions": ["css", "html", "hbs", "json"]
+        }
+    },
+    "url": "https://github.com/FurtherV/typescript-template",
+    "manifest": "replaced by workflow",
+    "download": "replaced by workflow",
+    "changelog": "replaced by workflow",
+    "readme": "replaced by workflow",
+    "license": "replaced by workflow"
+}
