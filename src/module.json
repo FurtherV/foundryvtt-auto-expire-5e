@@ -1,7 +1,7 @@
 {
-    "id": "typescript-template",
-    "title": "Typescript Template",
-    "description": "Typescript Template",
+    "id": "auto-expire-5e",
+    "title": "Auto Expire DnD5e",
+    "description": "Automated active effect expiration tailored for dnd5e.",
     "version": "1.0.0",
     "compatibility": {
         "minimum": "11",
@@ -22,7 +22,7 @@
             }
         ]
     },
-    "styles": ["styles/typescript-template.css"],
+    "styles": ["styles/auto-expire-5e.css"],
     "esmodules": ["scripts/main.js"],
     "languages": [
         {
@@ -34,10 +34,11 @@
     ],
     "flags": {
         "hotReload": {
-            "extensions": ["css", "html", "hbs", "json"]
+            "extensions": ["css", "html", "hbs", "json"],
+            "paths": ["languages", "scripts", "styles", "templates"]
         }
     },
-    "url": "https://github.com/FurtherV/typescript-template",
+    "url": "https://github.com/FurtherV/foundryvtt-auto-expire-5e",
     "manifest": "replaced by workflow",
     "download": "replaced by workflow",
     "changelog": "replaced by workflow",

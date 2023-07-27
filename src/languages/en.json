@@ -1,3 +1,23 @@
 {
-    "typescript-template": {}
+    "auto-expire-5e": {
+        "settings": {
+            "expirationHandling": {
+                "name": "Action on Expiry",
+                "hint": "Select 'Delete' to remove expired effects permanently, or 'Disabled' to keep them inactive."
+            }
+        },
+        "specialDurations": {
+            "sourceTurnStart": "Combat: Start of Caster's Turn",
+            "sourceTurnEnd": "Combat: End of Caster's Turn",
+            "targetTurnStart": "Combat: Start of Target's Turn",
+            "targetTurnEnd": "Combat: End of Target's Turn"
+        },
+        "tooltips": {
+            "duration": {
+                "header": "You can add Special Durations here, which happen one some specific turn. These override the numeric durations set above.",
+                "add": "Add Special Duration",
+                "delete": "Remove Special Duration"
+            }
+        }
+    }
 }
