@@ -1,4 +1,4 @@
-# Auto Expire 5e
+# Automated Effect Expiration for DnD5e
 
 ## Description
 
