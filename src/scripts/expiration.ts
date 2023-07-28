@@ -97,37 +97,55 @@ function isSpecialDurationFulfilled(
     effect: ActiveEffect,
     combat: Combat
 ): boolean {
-    // @ts-ignore
-    const source: Item | Actor = fromUuidSync(effect.origin) as Item | Actor;
-    const sourceActor: Actor | null =
-        source instanceof Actor ? source : source.actor;
-    // @ts-ignore
-    const targetActor: Actor | null = effect.target;
+    // Honestly, I do not know if an target actor (the actor who has the effect) always exist...
+    const targetActor: Actor | undefined = effect.target;
+    const targetCombatant =
+        combat.getCombatantByActor(targetActor?.id ?? "") ?? null;
 
-    if (!sourceActor?.id || !targetActor?.id) return true;
+    // A source does not always exist. For example, effects applied using DFred's CE have no origin.
+    const effectHasOrigin: boolean = effect.origin != null;
+    let sourceCombatant: Combatant | null = null;
+    if (effectHasOrigin) {
+        const source = fromUuidSync(effect.origin) as Actor | Item | null;
+        const sourceActor = source instanceof Actor ? source : source?.actor;
+        sourceCombatant =
+            combat.getCombatantByActor(sourceActor?.id ?? "") ?? null;
+    }
 
-    const sourceCombatant = combat.getCombatantByActor(sourceActor.id);
-    const targetCombatant = combat.getCombatantByActor(targetActor.id);
-
+    // Should make a utility function for this...
     const specialDurations = effect.getFlag(
         MODULE_ID,
         "specialDurations"
     ) as Record<number, string>;
+
     const currentCombatantId = combat.current.combatantId;
     const previousCombatantId = combat.previous.combatantId;
 
+    // We return true of any of the special durations condition is fulfilled.
     for (const specialDuration of recordToArray(specialDurations)) {
-        if (
-            (specialDuration === "sourceTurnStart" &&
-                currentCombatantId === sourceCombatant?.id) ||
-            (specialDuration === "sourceTurnEnd" &&
-                previousCombatantId === sourceCombatant?.id) ||
-            (specialDuration === "targetTurnStart" &&
-                currentCombatantId === targetCombatant?.id) ||
-            (specialDuration === "targetTurnEnd" &&
-                previousCombatantId === targetCombatant?.id)
-        ) {
-            return true;
+        if (effectHasOrigin && sourceCombatant != null) {
+            switch (specialDuration) {
+                case "sourceTurnStart":
+                    if (currentCombatantId === sourceCombatant.id) return true;
+                    break;
+                case "sourceTurnEnd":
+                    if (previousCombatantId === sourceCombatant.id) return true;
+                    break;
+                default:
+                    break;
+            }
+        }
+        if (targetCombatant != null) {
+            switch (specialDuration) {
+                case "targetTurnStart":
+                    if (currentCombatantId === targetCombatant.id) return true;
+                    break;
+                case "targetTurnEnd":
+                    if (previousCombatantId === targetCombatant.id) return true;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

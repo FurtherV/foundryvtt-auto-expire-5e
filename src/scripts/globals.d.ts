@@ -2,14 +2,20 @@ class Actor extends ClientDocumentMixin(foundry.documents.BaseActor) {
     appliedEffects: ActiveEffect[];
 }
 
-class Users {
+interface Users {
     activeGM: User | null;
 }
 
-class SettingConfig {
+interface SettingConfig {
     requiresReload?: boolean;
 }
 
-declare function fromUuidSync(
-    uuid: string
+interface ActiveEffect
+    extends ClientDocumentMixin(foundry.documents.BaseActiveEffect) {
+    origin?: string;
+    target?: Actor;
+}
+
+function fromUuidSync(
+    uuid: string | null | undefined
 ): foundry.abstract.Document<any, any> | null;
