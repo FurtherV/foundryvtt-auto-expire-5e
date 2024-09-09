@@ -1,12 +1,12 @@
 {
   "scripts": {
     "build": "npm run build:css",
-    "build:css": "lessc less/scriptable-items.less styles/scriptable-items.css",
+    "build:css": "lessc less/auto-expire-5e.less styles/auto-expire-5e.css",
     "lint": "eslint --ext .mjs --ignore-path .gitignore ./",
     "lint:fix": "eslint --ext .mjs --ignore-path .gitignore ./ --fix",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "watch": "less-watch-compiler less styles scriptable-items.less"
+    "watch": "less-watch-compiler less styles auto-expire-5e.less"
   },
   "devDependencies": {
     "less": "^4.2.0",
