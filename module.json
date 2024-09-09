@@ -1,0 +1,51 @@
+{
+  "id": "auto-expire-5e",
+  "title": "Automatic Effect Expiration for dnd5e",
+  "description": "A module for the Foundry dnd5e system which automatically handles expired active effects.",
+  "version": "AUTOMATIC",
+  "library": "false",
+  "compatibility": {
+    "minimum": 12,
+    "verified": 12
+  },
+  "authors": [
+    {
+      "name": "FurtherV",
+      "url": "https://github.com/FurtherV",
+      "discord": "furtherv"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "3.2.0",
+          "maximum": "3.3.9"
+        }
+      }
+    ]
+  },
+  "esmodules": ["scripts/auto-expire-5e.mjs"],
+  "styles": ["styles/auto-expire-5e.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "flags": {
+    "hotReload": {
+      "extensions": ["css", "hbs", "json"],
+      "paths": ["templates", "lang", "styles/auto-expire-5e.css"]
+    }
+  },
+  "url": "https://github.com/FurtherV/auto-expire-5e",
+  "manifest": "https://github.com/FurtherV/auto-expire-5e/releases/latest/download/module.json",
+  "download": "AUTOMATIC",
+  "license": "https://raw.githubusercontent.com/FurtherV/auto-expire-5e/master/LICENSE",
+  "changelog": "AUTOMATIC",
+  "bugs": "https://github.com/FurtherV/auto-expire-5e/issues"
+}

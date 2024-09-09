@@ -1,0 +1,42 @@
+{
+  "SCRIPTABLE-ITEMS": {
+    "Trigger": {
+      "button": "On Button Click",
+      "preUseItem": "On Pre Use Item",
+      "addToActor": "When Added to Actor",
+      "removeFromActor": "When Removed from Actor"
+    },
+    "Script": {
+      "Label": "Script",
+      "Save": "Save Script",
+      "SaveAndExecute": "Save and Execute Script"
+    },
+    "Setting": {
+      "headerButtonPermission": {
+        "Name": "Button Permission Level",
+        "Hint": "The minimum role required to see the 'Scriptable Items' button in the header of item sheets."
+      },
+      "showHeaderButtonLabel": {
+        "Name": "Display Button Label",
+        "Hint": "If checked, the label is displayed in the header of applicable item sheets."
+      },
+      "chatCardScriptButtonPrefix": {
+        "Name": "Default Chat Card Button Prefix",
+        "Hint": "Sets the default prefix for the script name shown on script chat card buttons. If empty, the prefix is skipped."
+      },
+      "chatCardScriptButtonIcon": {
+        "Name": "Default Chat Card Button Icon",
+        "Hint": "Sets the default icon classes for the icon shown on script chat card buttons. If empty, no icon will be shown."
+      }
+    },
+    "Dialog": {
+      "ConfirmDelete": {
+        "Title": "Delete {type}: {name}",
+        "AreYouSure": "Are you sure that you want to delete the {type} '{name}'? This action cannot be undone."
+      },
+      "ScriptChoice": {
+        "Prompt": "Choose which script will be executed."
+      }
+    }
+  }
+}
