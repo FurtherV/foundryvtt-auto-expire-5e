@@ -1,3 +1,15 @@
 {
-  "AUTO-EXPIRE-5E": {}
+  "AUTO-EXPIRE-5E": {
+    "expiryAction": {
+      "delete": "Delete Effect",
+      "disable": "Disable Effect",
+      "prompt": "Show Prompt"
+    },
+    "setting": {
+      "expiryAction": {
+        "name": "Action on Expiration",
+        "hint": "The action taken with an active effect once its expired."
+      }
+    }
+  }
 }

@@ -1,9 +1,18 @@
-import { FLAG, MODULE_ID } from "./constants.mjs";
-import { ScriptModel } from "./data/script-model.mjs";
+import { MODULE_ID } from "./constants.mjs";
+import { ExpirationConfigModel } from "./data/expiration-config-model.mjs";
 
+/**
+ * #TODO
+ */
 export function registerModuleApi() {
   const moduleObj = game.modules.get(MODULE_ID);
-  const api = {};
+  const api = {
+    abstract: {
+      DataModels: {
+        ExpirationConfigModel,
+      },
+    },
+  };
   moduleObj.api = api;
-  globalThis[MODULE_ID.replace("-", "").toCamelCase()] = api;
+  globalThis[MODULE_ID.replaceAll("-", " ").toCamelCase()] = api;
 }

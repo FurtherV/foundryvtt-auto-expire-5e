@@ -1,0 +1,1 @@
+Time based trigger also works as "start of next turn of effect parent". I assume the only triggers I really need are: Time (In Combat), Time (Out of Combat), End of next Turn of XYZ, Rests, Combat Start / End
