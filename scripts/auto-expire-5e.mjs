@@ -6,6 +6,7 @@ import { getSetting, registerModuleSettings } from "./settings.mjs";
 import { registerModuleApi } from "./api.mjs";
 import {
   EXPIRATION_TRIGGER,
+  FLAG,
   LANG_ID,
   MODULE_ID,
   SETTING,
@@ -124,12 +125,28 @@ Hooks.on("renderActiveEffectConfig", async (app, [html], data) => {
   const durationTabSection = html.querySelector("section[data-tab='duration']");
 
   const model = ExpirationConfigModel.fromEffect(effect);
+  const source = model.toObject(false);
+  const pathPrefix = `flags.${MODULE_ID}.${FLAG.EXPIRATION_CONFIG}.`;
+
+  function prepareField(path, options = {}) {
+    const field = model.schema.getField(path);
+    const value = foundry.utils.getProperty(source, path);
+
+    return {
+      name: pathPrefix + path,
+      field: field,
+      value: value,
+      ...options,
+    };
+  }
+
+  const preparedFields = {};
 
   const renderData = {};
-  renderData.moduleTitle = game.modules.get(MODULE_ID).title;
+  renderData.fields = preparedFields;
 
   const extensionHTML = await renderTemplate(
-    `${TEMPLATES_FOLDER}/duration-tab-extension.hbs`,
+    `${TEMPLATES_FOLDER}/effect-sheet.hbs`,
     renderData,
   );
 

@@ -1,5 +1,5 @@
 const MODULE_ID = "auto-expire-5e";
-const LANG_ID = MODULE_ID.toUpperCase();
+const LANG_ID = "AUTO-EXPIRE-5E";
 const TEMPLATES_FOLDER = `modules/${MODULE_ID}/templates`;
 const FLAG = {
   EXPIRATION_CONFIG: "expirationConfig",

@@ -1,5 +1,7 @@
 {
   "AUTO-EXPIRE-5E": {
+    "title": "Automatic Effect Expiration for dnd5e",
+    "titleShort": "Automatic Effect Expiration",
     "expiryAction": {
       "delete": "Delete Effect",
       "disable": "Disable Effect",
