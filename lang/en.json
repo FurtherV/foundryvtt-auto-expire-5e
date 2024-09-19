@@ -8,7 +8,16 @@
       "prompt": "Show Prompt"
     },
     "expirationTrigger": {
-      "time": "Duration exceeded"
+      "time": "Duration exceeded",
+      "sourceActorTurnStart": "Source Actor Turn Start",
+      "sourceActorTurnEnd": "Source Actor Turn End",
+      "targetActorTurnStart": "Target Actor Turn Start",
+      "targetActorTurnEnd": "Target Actor Turn End",
+      "combatStart": "Combat Start",
+      "combatEnd": "Combat End",
+      "shortRest": "Short Rest",
+      "longRest": "Long Rest",
+      "custom": "Custom"
     },
     "setting": {
       "expiryAction": {

@@ -88,8 +88,6 @@ function _processActors(actors) {
 }
 
 Hooks.on("updateWorldTime", (newTime, delta, options, userId) => {
-  console.debug("updateWorldTime", [newTime, delta, options, userId]);
-
   // Only the GM shall handle expiration
   if (!game.users.activeGM.isSelf) return;
 
@@ -116,8 +114,6 @@ Hooks.on("updateWorldTime", (newTime, delta, options, userId) => {
 });
 
 Hooks.on("renderActiveEffectConfig", async (app, [html], data) => {
-  console.debug([app, html, data]);
-
   // Inject HTML extension into active effect config sheet
   /** @type {ActiveEffect} */
   const effect = data.effect;
@@ -128,19 +124,20 @@ Hooks.on("renderActiveEffectConfig", async (app, [html], data) => {
   const source = model.toObject(false);
   const pathPrefix = `flags.${MODULE_ID}.${FLAG.EXPIRATION_CONFIG}.`;
 
-  function prepareField(path, options = {}) {
+  const prepareField = (path, options = {}) => {
     const field = model.schema.getField(path);
     const value = foundry.utils.getProperty(source, path);
 
     return {
-      name: pathPrefix + path,
       field: field,
       value: value,
-      ...options,
-    };
-  }
+      path: pathPrefix + path,
+      ...options
+    }
+  };
 
   const preparedFields = {};
+  preparedFields.triggers = Object.values(EXPIRATION_TRIGGER).map((x) => prepareField(`triggers.${x}`));
 
   const renderData = {};
   renderData.fields = preparedFields;
