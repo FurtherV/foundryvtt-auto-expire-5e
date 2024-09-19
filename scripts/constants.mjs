@@ -18,6 +18,15 @@ const EXPIRY_ACTION = {
 
 const EXPIRATION_TRIGGER = {
   TIME: "time",
+  SOURCE_ACTOR_TURN_START: "sourceActorTurnStart",
+  SOURCE_ACTOR_TURN_END: "sourceActorTurnEnd",
+  TARGET_ACTOR_TURN_START: "targetActorTurnStart",
+  TARGET_ACTOR_TURN_END: "targetActorTurnEnd",
+  COMBAT_START: "combatStart",
+  COMBAT_END: "combatEnd",
+  SHORT_REST: "shortRest",
+  LONG_REST: "longRest",
+  CUSTOM: "custom",
 };
 
 const DEFAULT_EXPIRATION_TRIGGERS = [EXPIRATION_TRIGGER.TIME];

@@ -4,7 +4,14 @@
 
 import { getSetting, registerModuleSettings } from "./settings.mjs";
 import { registerModuleApi } from "./api.mjs";
-import { SETTING } from "./constants.mjs";
+import {
+  EXPIRATION_TRIGGER,
+  LANG_ID,
+  MODULE_ID,
+  SETTING,
+  TEMPLATES_FOLDER,
+} from "./constants.mjs";
+import { ExpirationConfigModel } from "./data/expiration-config-model.mjs";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -79,33 +86,6 @@ function _processActors(actors) {
   }
 }
 
-/**
- * #TODO
- * @param {Actor[]} actors
- * @private
- */
-const _debouncedProcessActors = foundry.utils.debounce(
-  (actors) => _processActors(actors),
-  250,
-);
-
-Hooks.on("combatTurnChange", (combat, prior, current) => {
-  console.debug("combatTurnChange", [combat, prior, current]);
-
-  // Only the GM shall handle expiration
-  if (!game.users.activeGM.isSelf) return;
-
-  if (!combat.active) return;
-
-  /** @type {Combatant[]} */
-  const combatants = combat.combatants.contents;
-
-  /** @type {Actor[]} */
-  const actors = combatants.map((x) => x.actor).filter((x) => x != null);
-
-  _debouncedProcessActors(actors);
-});
-
 Hooks.on("updateWorldTime", (newTime, delta, options, userId) => {
   console.debug("updateWorldTime", [newTime, delta, options, userId]);
 
@@ -131,5 +111,29 @@ Hooks.on("updateWorldTime", (newTime, delta, options, userId) => {
     })
     .map((x) => x.actor);
 
-  _debouncedProcessActors(uniqueActors);
+  _processActors(uniqueActors);
+});
+
+Hooks.on("renderActiveEffectConfig", async (app, [html], data) => {
+  console.debug([app, html, data]);
+
+  // Inject HTML extension into active effect config sheet
+  /** @type {ActiveEffect} */
+  const effect = data.effect;
+
+  const durationTabSection = html.querySelector("section[data-tab='duration']");
+
+  const model = ExpirationConfigModel.fromEffect(effect);
+
+  const renderData = {};
+  renderData.moduleTitle = game.modules.get(MODULE_ID).title;
+
+  const extensionHTML = await renderTemplate(
+    `${TEMPLATES_FOLDER}/duration-tab-extension.hbs`,
+    renderData,
+  );
+
+  durationTabSection.insertAdjacentHTML("beforeend", extensionHTML);
+
+  app.setPosition({ height: "auto" });
 });

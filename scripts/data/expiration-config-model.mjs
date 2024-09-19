@@ -2,6 +2,7 @@ import {
   DEFAULT_EXPIRATION_TRIGGERS,
   EXPIRATION_TRIGGER,
   FLAG,
+  LANG_ID,
   MODULE_ID,
 } from "../constants.mjs";
 
@@ -13,6 +14,7 @@ export class ExpirationConfigModel extends foundry.abstract.DataModel {
     const triggerFields = {};
     for (const trigger of Object.values(EXPIRATION_TRIGGER)) {
       triggerFields[trigger] = new fields.BooleanField({
+        label: `${LANG_ID}.expirationTrigger.${trigger}`,
         required: false,
         initial: DEFAULT_EXPIRATION_TRIGGERS.includes(trigger),
       });

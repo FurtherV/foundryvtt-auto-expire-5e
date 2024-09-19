@@ -1,0 +1,13 @@
+{{log this}}
+<hr>
+<fieldset>
+    <legend>{{moduleTitle}}</legend>
+    <div>
+        {{#each triggers}}
+        <label>
+            <input type="checkbox" name={{name}} {{checked value}}>
+            {{label}}
+        </label>
+        {{/each}}
+    </div>
+</fieldset>

@@ -5,6 +5,9 @@
       "disable": "Disable Effect",
       "prompt": "Show Prompt"
     },
+    "expirationTrigger": {
+      "time": "Duration exceeded"
+    },
     "setting": {
       "expiryAction": {
         "name": "Action on Expiration",
