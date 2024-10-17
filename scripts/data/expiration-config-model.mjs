@@ -7,6 +7,9 @@ import {
 } from "../constants.mjs";
 
 export class ExpirationConfigModel extends foundry.abstract.DataModel {
+  /** @inheritdo */
+  static LOCALIZATION_PREFIXES = [LANG_ID];
+
   /** @inheritdoc */
   static defineSchema() {
     const fields = foundry.data.fields;
@@ -15,13 +18,17 @@ export class ExpirationConfigModel extends foundry.abstract.DataModel {
     for (const trigger of Object.values(EXPIRATION_TRIGGER)) {
       triggerFields[trigger] = new fields.BooleanField({
         label: `${LANG_ID}.expirationTrigger.${trigger}`,
+        hint: "",
         required: false,
         initial: DEFAULT_EXPIRATION_TRIGGERS.includes(trigger),
       });
     }
 
     return {
-      triggers: new fields.SchemaField(triggerFields),
+      triggers: new fields.SchemaField(triggerFields, {
+        label: `${this.LOCALIZATION_PREFIXES}.FIELDS.triggers.label`,
+        hint: `${this.LOCALIZATION_PREFIXES}.FIELDS.triggers.hint`,
+      }),
     };
   }
 

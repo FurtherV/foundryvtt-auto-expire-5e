@@ -19,6 +19,12 @@
       "longRest": "Long Rest",
       "custom": "Custom"
     },
+    "FIELDS": {
+      "triggers": {
+        "label": "Expiration Triggers",
+        "hint": "An effect is considered expired when any of the above checked triggers is fulfilled."
+      }
+    },
     "setting": {
       "expiryAction": {
         "name": "Action on Expiration",

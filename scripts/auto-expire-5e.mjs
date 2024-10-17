@@ -132,12 +132,17 @@ Hooks.on("renderActiveEffectConfig", async (app, [html], data) => {
       field: field,
       value: value,
       path: pathPrefix + path,
-      ...options
-    }
+      ...options,
+    };
   };
 
   const preparedFields = {};
-  preparedFields.triggers = Object.values(EXPIRATION_TRIGGER).map((x) => prepareField(`triggers.${x}`));
+  preparedFields.triggers = {
+    ...prepareField("triggers"),
+    innerFields: Object.values(EXPIRATION_TRIGGER).map((x) =>
+      prepareField(`triggers.${x}`),
+    ),
+  };
 
   const renderData = {};
   renderData.fields = preparedFields;

@@ -1,0 +1,8 @@
+.active-effect-sheet .auto-expire-5e .expiration-triggers label {
+  flex: 0 0 100%;
+  margin: 0;
+}
+.active-effect-sheet .auto-expire-5e .expiration-triggers label.checkbox {
+  flex: 0 0 33%;
+  text-align: left;
+}
